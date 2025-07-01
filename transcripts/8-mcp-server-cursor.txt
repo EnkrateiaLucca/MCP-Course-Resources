@@ -1,0 +1,22 @@
+Transcript with 1-minute Timeline Markers
+=====================================
+
+
+[0:00:00]
+Alright folks, so in the previous video we saw how to set up an mcb server and then connect that to clock code in order to be able to use it within that CLI tool. What we're going to do in this video is do the same thing but connect it to a different type of editor called the cursor editor, which is a fork of VS code and it's a super powerful editor for writing code with AI. So we're not going to go into the details of how cursor works, what I'm going to assume here is that you have an awareness of how cursor works. If not, I have a cursor course coming up so you can check that out. And what we're going to be doing is very simple. We're going to be opening up cursor settings by going to the command palette and then writing cursor settings. And then here in cursor settings we're going to go to tools and integrations. And then if we don't have any mcp tools already set up, it's going to prompt us to add a custom mcp tool. So we're going to click that and when we do so, we're going to be directed to this file, an mcp.json file that will contain all the mcp servers that we want to have access through cursor within the agentac chat mode that cursor provides.
+[0:01:00]
+
+[0:01:00]
+So in order to set this up, it's very simple. The same way that we've done in the previous video in cloud code when we set the local scope, when we set the scope to a project, here in the mcp server with an cursor, we're going to set up the name of the server. So I'm going to write Lucas top three foods. And then we're going to write two crucial things in order to make that mcp server accessible within cursor. We're going to write the command key and within this command key, we're going to give the path to the Python executable that runs that particular mcp server that we set up. So I'm going to be running, running which Python here on my terminal, which gives me the correct path to the Python executable that has the right environment, and I'm going to be pasting it over here.
+[0:02:00]
+
+[0:02:00]
+And then, I'm going to write arcs, and I'm going to give a list of strings containing all the arguments that are needed in order to run this mcp server. In our case, it's a very simple case of getting the path to this cloud mcp server.py file. So I'm going to right click this file, I'm going to click on copy path, then I'm going to go back to that JSON, and I'm going to paste that right over here. Now that we've done that, folks, I can close this window, and I can go back to cursor settings, where we're going to see that now there's an mcp to here that has the proper name and should allow us to run that mcp server. And if for any reason you see either a yellow or red dot over here and the two is not available, we're going to reload cursor just to make sure that no issue is happening here with our mcp servers.
+[0:03:00]
+
+[0:03:00]
+And now we can see that it's a green light so it means that it's connected and we can use the mcp server. We're going to go to the command palette again so control shift P on my computer, but whatever you need you can hit also control P, and then the plot the greater than sign. And then you can hit open new agent chat, which will open this chat here on the right, which is where we interact with AI agents within the cursor editor. So what I'm going to do here is I'm just going to see if I can use that mcp server that I gave cursor access to within this terminal interface. So I'm going to say within this chat interface. So I'm going to say what are Lucas top three foods use the mcp tool. All right, I'm going to cheat a little bit just to make sure that just the access is actually working. I'm going to hit enter and what's going to happen is that cursor is going to request my permission in order to run this tool, which is what's happening right now.
+[0:04:00]
+
+[0:04:00]
+I'm going to click run to and curse is going to run the tool and give us the information. So that's how you set up an mcp server and then connect that inside of cursor. Cheers!

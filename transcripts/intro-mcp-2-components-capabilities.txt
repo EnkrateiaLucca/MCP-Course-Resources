@@ -1,0 +1,18 @@
+Transcript with 1-minute Timeline Markers
+=====================================
+
+
+[0:00:00]
+We have introduced the basic MCP infrastructure composed of three core components. The host, the user-facing application, the client, which handles the one-to-one connections to the servers that expose functionality like tools, resources, and prompts. Let's dive a little bit deeper. So the host will be the user-facing application, something like claw desktop or cursor, other IDEs. Now the role of the host will be to manage user interactions and permissions, to orchestrate the flow between requests at the LLM and the tools available, and render that result back to the user, while the client will handle one-to-one connections with the MCP servers. It will handle all the protocol-level MCP communication, essentially being responsible for communicating and interacting with the MCP server. It will act as an intermediary between the host and the server, and will manage capability discovery and capability invocation.
+[0:01:00]
+
+[0:01:00]
+Now the server will be an external program service that exposes capabilities. Now it's going to be a lightweight wrapper around existing functionality, and it can run locally or remotely. It will expose these capabilities in a standardized format, and it will provide access to tools, data resources, services, and so on. Now we've talked about these capabilities exposed by an MCP server, so let's go into a little bit of what these capabilities are. We're going to discuss tools, resources, prompts, and the lesser-discussed sampling. Now what is a tool? A tool will be model-controlled executable functions, like a Python function. Now they require user approval for security reasons, and examples can be things like a function to send email, or to fetch data from GitHub, or to update a database. Now they're one of the most powerful MCP capabilities. Resources on the other hand will be application-controlled data access.
+[0:02:00]
+
+[0:02:00]
+So they will have read-only operations, and they usually don't use that much compute, and examples can be file contents, database records, and so on. Now prompts are user-controlled templates, and they essentially define the structure for interactions with the LLM and the user. They are essentially guide workflows. Examples can be, for example, a code review template, like this one. Now sampling are server-initiated LLM interactions. They require client facilitation, and they enable those agentic behaviors that we've discussed in the previous video. So examples can be a multi-step analysis sampling request. Now in the next video, we're going to go into the communication flow, demonstrating on a superficial level how do the messages in the MCP infrastructure flow through these
+[0:03:00]
+
+[0:03:00]
+four elements of the model context protocol, right? The user, the host, the MCP client, and the server. So see you there. Cheers.

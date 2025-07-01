@@ -1,0 +1,18 @@
+Transcript with 1-minute Timeline Markers
+=====================================
+
+
+[0:00:00]
+All right, folks, so far we've talked about the basic components and basic capabilities of MCP. But how does the communication flow actually works? Well, you're going to start with the user sending some sort of prompt message, some sort of query to the host application, right? So we start right here. And what happens is that request is sent to the host application where some MLM is going to understand that request and the host application will have, for each MCP server, some MCP client that handles that one-to-one connection. So we're going to have an MCP, a client connection that's going to connect to that appropriate server. And what's going to happen is the first thing we're going to do is capability discovery, meaning a query that wants to understand from the MCP server, what are the capabilities available? And that information is going to get relayed back from the server, back to the client, and back to the host application. And now that the client has that information, a communication can occur where the LLM in the host application can say,
+[0:01:00]
+
+[0:01:00]
+"Okay, I want to use this capability, like sending emails or creating files and so on." So the capability in vocation is going to occur, and that's going to get executed. In the client, we're going to have the actual handling of the execution call, like call this to do this particular action and so on. So that is going to be sent to the server where the actual functions get run, right? So it's going to happen to the server execution where there's a function that performs a task that's being requested. And that server execution is going to lead to some results being relayed back to the client, which will relay those results back to the LLM in the host application, so that we can get and incorporate a final response done by the large language model that sits at the host application back to the user. So the basic idea behind how the communication flow is going to work is going to look something that looks like this.
+[0:02:00]
+
+[0:02:00]
+We're going to have user interaction, meaning the user sends a request to the host application. The host application is going to process that request in the form of some LLM processing that initial query. Then we're going to have a client connection that initially will do capability discovery to understand what are the tools and functionalities available by the specific MCP server in question. Then after that capability in vocation, we're going to have server execution, which means in the host application, the LLM is going to invoke "I want to use this tool to perform this task" and so on. That's going to be sent to the server for execution. The server is going to return the results back and the client is going to relay those results to the host so that we can integrate everything into the context of the LLM so that the user can finally see a response that integrates everything that was done during this process. So that's the basic communication flow. In the next video, we're going to see how to actually build this in practice.
+[0:03:00]
+
+[0:03:00]
+So I'll see you there. Cheers.

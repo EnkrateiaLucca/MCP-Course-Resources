@@ -1,0 +1,110 @@
+Transcript with 1-minute Timeline Markers
+=====================================
+
+
+[0:00:00]
+All right folks, so in this video we're going to be building another server client example with MCP, but this time instead of using a local transport, like we did last time with the STDIO transport, we're going to be using streamable HTTP. This is the approach you're going to take if you want to deploy your MCP servers to be used across the internet or potentially sell it in some MCP marketplace and so on, we're going to be using potentially some form of remote MCP and right now in the documentation, streamable HTTP is the way to go. It used to be SSC, but now it's streamable HTTP. All right folks, in this video we're going to be building another server client example with MCP, but in this case we're going to be using the streamable HTTP mechanism for transport, which just means that this is the type of approach you're going to take when you want to deploy this to the internet so that other people can use that MCP server. All right, so just like in the previous example, we're going to go to those steps again so
+[0:01:00]
+
+[0:01:00]
+that we put those, so that we strengthen and emphasize those, that approach, right? So I'm here in an empty folder. And the first thing we're going to do is we're going to say UV in it. Now that we've done that, we you see that a dot to ml file has been created. And what we're going to do next is we're going to set up our virtual environments. I'm going to say UV Vymph. And now I'm going to activate that environment, bin activate, perfect. Let me just deactivate some kind of environment I have over here. Beautiful. Now we're going to be adding the dependencies for this project. So in this case, it's going to be MCP, while the MCP, the MCP CLI, HTTPX, and Tropic. And I think, I think that's it.
+[0:02:00]
+
+[0:02:00]
+Now, now that we've done that, all we need to do is set up our server and our client. So I'm going to say, touch server dot pi, and then touch client dot pi. And I'm actually going to call this host client dot pi just because we will be, just like in the previous example, we're going to add a little chat loop functionality to this client so that we can make multiple requests to the MCP server. And that for me kind of simulates the idea of having this host app that the user interacts with. And then the client has a sub component insight. All right. Beautiful stuff. Now that we've done that, what we're going to do is we're going to go to our Cp server file. So I'm going to go control P, server dot pi, and here we are. So I'm going to be, I already prepared this example. So I'm just going to be pedagogically copying and pasting here the example so that we understand
+[0:03:00]
+
+[0:03:00]
+what's going on. All right. So I have a little description of what this server is going to do is going to be a very simple personal assistant MCP server with the ability to create files, list files, read files, and edit files in your local computer. Right. Now, for the import modules, I'm going to be importing the pretty much the same stuff that we did last time. The additional thing here is, I think, pretty much nothing, maybe path flip. All right. So now we're going to instantiate our MCP instance. So we're going to say fast MCP. And then we're going to give it a name, simple MCP, simple assistant simple, simple MCP. I think it's fine. There you go. And now that we've done that, we're going to create our tools. So we are going to create essentially three tools for this project. Right. So the first one is going to be to create file. Okay.
+[0:04:00]
+
+[0:04:00]
+So I'm just going to say pass here. And then the other one is going to be read file. And the third and last one is going to be for editing a file. And finally, the final one is going to be to list files. All right. Those are the tools that we're going to have for this MCP. And it's important to note that for each of them, we are going to have that, just like with the before, that decorator, MCP dot tool, like we did last time. All right. So this is going to be the structure that we're going to have for this MCP server. Now one additional thing that I want to add to this, let me just, let me just come over here and do a little magic trick, there you go. And what I want to do is just create separation between each example. So if I do like this, there you go. So for the create file for the read file, for the added file and list files, each of those
+[0:05:00]
+
+[0:05:00]
+are going to have functionality that we're going to be able to interact with via the host client file that we're going to write. And also in the next video, I'm going to show you how you can take this and then use it and cloud desktop, you can use it in cursor and so on and so forth. This is going to be a very cool way of showing you how to set up MCP servers for personal workflows and automation workflows and so on. All right. So instead of writing the whole code here, I'm just going to programmatically copy and paste each of the examples. So the first one is to create a file. This is essentially a function that takes a file path and some content and outputs a dictionary. And what it's going to do, it's essentially take the file path and then create a parent directory if that the parent directory for that file doesn't exist and then create the
+[0:06:00]
+
+[0:06:00]
+file inside of the specified location. All right. That's pretty much it. And we add a little bit of a trial except to handle errors or whatever potential thing that can happen. All right. For the second, for the second example, we're going to have the read file function, right? And for this read file function, you guessed it, it's essentially what it sounds like. It's a function that allows you to read from a file, given the file path. Pretty simple and straightforward. Same thing for the added file. The added file is going to take in the ability to edit a specific file that you might want. And you're going to edit via this function. I'm going to call it not update file, I'm going to call it added file just for the let's call that update file, why not? And you're going to take in a file path, the content, and you're going to output dictionary containing information about the successor, not success of your request.
+[0:07:00]
+
+[0:07:00]
+All right. Finally, for the list files, I mean, it's pretty straightforward. This is going to be a function that allows you to list all the files in a specified location. All right. So given a given a directory path, you're going to list all the files inside of that directory path. And that's it. All right. For additional bonus here, we're going to write a little mcp.prompt where we're going to have a prompt to going to instruct the LLM on how to handle file structure and so on. Okay. So for that, we're going to have a little, it's going to be called manage files. And essentially, it's just going to be a prompt to help the AI manage the files. So in the system message, we say you're a helpful file management assistant. This instructs the AI on how to behave with the files. And you can create, read, update and organize files efficiently. And the prompt is I need to help managing my files.
+[0:08:00]
+
+[0:08:00]
+I can do this, this is what would you like to, what would you like me to help you with? So this is essentially very wrong now that I look at it. All right, so we're just going to have these four tools, we're going to have create file, read file, update file and list the files. Those are going to be the tools that we have, all right. And now that we have the server, we're just going to run that server. And the only thing that's going to change here, folks, is that this time we're going to say, we're going to say that the transport is, it's streamable HTTP. So I'm going to say MCP run. And then for transport, I'm going to say streamable HTTP. And that's pretty much it, okay. So what this thing is doing is running, so running the server with streamable HTTP transport.
+[0:09:00]
+
+[0:09:00]
+And that's pretty much it, all right, beautiful. So now we can test this out so I can come over here to my terminal and I can run UV run. I'm actually going to run the MCP inspector to just test that the server is working great. So I'm going to run MCP dev and the server. And then I have a little issue here, player health constraints, all right, there you go. UV run MCP dev.py. And then I give the path to the server file. And now I open up that lake and here we are in the MCP inspector. So for transport, you can see that here it's saying SDIO, but now we're using streamable
+[0:10:00]
+
+[0:10:00]
+HTTP. I'm going to change it to streamable HTTP. The URL here, it says localhost 301 SSC, I'm not sure that that's correct. I'm not really sure that that's correct, folks. So let's test that out, let's see if it works. So I'm going to try to connect, no, it's running proxy tokens correct. So I'm not really sure what is the port in which this server is running query parameters this SSC, a streamable transport type, all right, is the MCP server running? Yes, it is. So why did that not work? Maybe because why didn't it work? Let's see, it's probably because I know, because I forgot to run. So let me just, let me just stop this real quick.
+[0:11:00]
+
+[0:11:00]
+And I'm going to open up a different terminal here, deactivate this stuff. And now I'm going to come over here, and here I'm going to run uv run server. There you go. So this server is running on this port 8000, all right. And now I'm going to say uv run mcp mcp dev dot, and then I'm going to point to the server. Nice, so now I'm going to go into this MCP inspector, great. And now stream bridge DTP. Now it's not 3001 folks, as we said, now we know that this server is running on 8000. So I'm going to change that to 8000, and instead of saying, I think SSC is correct.
+[0:12:00]
+
+[0:12:00]
+So let's try it. No, it's not. So let's try streamable HTTP, streamable HTTP. And now we connect, and now we connect. Now it's not connecting for some reason. So let's try streamable HTTP.
+[0:13:00]
+
+[0:13:00]
+So let's try streamable HTTP. So let's try streamable HTTP. All right, folks, so now we're going to run our server.
+[0:14:00]
+
+[0:14:00]
+So in this side here on the terminal, I'm going to run uv run the server. And on this side, I'm going to run the inspector to test that the server is working well. So I'm going to run uv run mcp dev, and then I'm going to point to the server. And now that it's running, I'm going to click on my local host over here, and the inspector is going to open up. And for transport type, I'm setting streamable HTTP. And for the URL of this MCP server, I'm setting 8000, and then forward slash MCP. And now click on connect, and here we go, we have everything that we need. I'm going to click on tools, and I'm going to click on list tools. And as you can see, we can see the create file tool, read file, update file, and list
+[0:15:00]
+
+[0:15:00]
+file tools, which is pretty awesome. We can test each of these tools individually. For example, I can just point to the current folder and run this tool. And as you can see, we can see all the files in the current folder, which is awesome. That means that it's working. Beautiful stuff. Now, having done that, folks, and because we're happy, we're going to just disconnect to this server. We're going to go back to our terminal. We're going to stop running the server. We're going to stop running this. We're going to get out of this terminal for a sec. And now that we are happy with this, what we're going to do is we're going to go over and write the code for the client. Now, for the client, folks, because I'm a very lazy man, what we're going to do is, just like we did before, we're going to use the example foundation from the documentation. And the changes we're going to make are very, very small in order to change from STDIO
+[0:16:00]
+
+[0:16:00]
+to Streambow HTTP, all right? So I already have the example here, so I'm just going to copy it. I'm going to paste it over here. So what I want to do is, on my left, folks, I have the host client with Streambow HTTP on my left. And what I want to do is I want to put on my right the example that we did before with the STDIO that we pulled from the MCP official documentation. This way, you can get a very nice sense of how close these are. And this is not going to be some code that you've never seen before. It's going to sound-- it's going to look kind of alien to you. So I'm going to copy the code from previously, and I'm going to open up a file here. I'm going to paste it here. And there you go. So on my right, I have an example that shows the client with STDIO. And on my left, I have an example that shows the client with Streambow HTTP, all right? I'm actually going to rename this file here.
+[0:17:00]
+
+[0:17:00]
+I'm just going to say, let me just rename this file, let me just rename this file. Why is that now renaming the file? Let me just go over here and say, move host to say, client streamable HTTP.py. Beautiful. Client streamable HTTP. And now we can go over. And now we have the Streambow HTTP example here on my left. So you can easily differentiate between those, all right? So now that we have that and everything is working beautifully, what we're going to do is as you can see, code is pretty much very, very similar. We have from MCP client session. We have from MCP client session. Now one difference is that here we're getting the MCP Streambow HTTP client. And before we're getting the STDIO client.
+[0:18:00]
+
+[0:18:00]
+Look at that. Very, very similar. And now the rest is all pretty much the same. The difference is that in this one, we had to have this additional STDIO server parameters. Because remember, you have to have that command to run the server locally, right? So you have to give that STDIO server parameters because you have to give the parameters for running the file. In the Streambow HTTP, we just need the URL pointing to where the MCP server is being hosted. So now for our MCP client, in the left here, I have the Streambow HTTP example. And on my right, I have the previous STDIO client example. And as you can see, the difference is that we added these two sessions context here. One is called session context. And the other one is Streams context. This is going to handle all of the streamable related stuff from this MCP server. So before we had an async function to connect to the server, we still have that async function
+[0:19:00]
+
+[0:19:00]
+to connect to the server. The only thing is that now a connection via streambow HTTP, right? The parameters are very similar. But instead of having a server script path, we now have a server URL and the headers for establishing that connection, all right? And then here, we set up our connection client. And then we call these, honestly folks, I have no idea what these things are doing in this context. But this is an official example from the documentation. So we're getting session context from the client session. And then we're establishing client sessions equal to session context dot a enter. The one thing I'm going to look at, folks, is what is this a enter this a enter method
+[0:20:00]
+
+[0:20:00]
+here that's being called that I'm not really sure what it does. So I'm just going to do a little quick MCP docs, client session, a enter client developers started to talk beautiful stuff. And let me see if I find this is the example from the official documentation. And I want to know what that a enter thing does, don't have it here. All right, folks. So now on my left, I have the string boy HTTP client. And on my right, I have the example that we did previously with the SDGIO client. Now we have pretty much the same functionality in both the only thing that we're adding here
+[0:21:00]
+
+[0:21:00]
+on the string boy HTTP client is a string boy HTTP client different from an SDGIO client on the previous example. And the previous example had the SDGIO server parameters so that you can feed it the parameters for running that MCP server locally. And in the left, we don't need it because all we're going to need is the URL. So we're going to have a function to connect to the string boy HTTP server. And instead of taking like in the previous example, a server script path, like I'm showing you here on the right, we're going to take a server URL and the headers to establish that connection. So if you want to go deeper into the differences between these two connections, go into the model context protocol documentation. So we have this function. And then we have same function as before processing the query, processing the query. Now these are going to be pretty much very similar. The only thing I'm adding here is that it's pretty much the same, pretty much the same,
+[0:22:00]
+
+[0:22:00]
+right? Funness calls. Yeah, this is pretty much the same function because imagine folks, regardless of the type of connection that you make, right, be it string boy HTTP or SDGIO, at the end of the day, what you're doing is the processing of the query is going to be the same. Anything for the chat loop, chat loop is going to be the same pretty much. The cleanup, the cleanup is going to be a little bit different because here we just have to exit. And here we have to clean up the streamable related stuff, which involves you calling these special methods on the session context and the stream context folks end of the day. What matters is that we have pretty much the same structure. And all that we're doing extra on this stream boy HTTP stuff is just handling whatever is related to streaming the context and connecting to the server.
+[0:23:00]
+
+[0:23:00]
+Then when we use this as a little CLI to, I set up here an option to give the MCP local host port and I set a default to 8,000. And here you don't have to do that because we're not going to be hosting this in any URL. And then we initialize our client and then connect and then we establish the URL, whatever that local host port given is, forward slash MCP, all right. And that's pretty much it. Then we run it just like with the before and this should work very well. So now I'm going to just remove this unnecessary file here that I just used for this comparison. And on my left, I'm going to be running the server. So server.py. And now on my right, we're going to do a little test of that server. So let me just show you over here. Let me just see if we have the right Python version.
+[0:24:00]
+
+[0:24:00]
+We do not. So I'm going to say source, been activate. So I'm going to check in beautiful. All right, perfect. So now I'm going to run you, you run client. Okay. So we've connected folks, as you can see, and for some reason, I think I should have seen the tools, but let's do a test. So I'm going to say create a simple Python script on the current folder to print teaching about MCP servers. Now I'm going to hit enter. And now you can see that that went across to the server. The server is executing the tool request. And it seems like it worked. We can inspect here on our client side that the file path is MCP message.py and the contents
+[0:25:00]
+
+[0:25:00]
+is just a print message that just like I asked. So it seems like it worked. So we can inspect that file right now. We can say MCP message. And as you can see, folks, super cool. It worked. It performed the action. It was quite fast actually. And yeah, it's working. It's a beautiful thing. Imagine folks, this is something that's running on my local host, but you can deploy this to be running on whatever host you want, a WS, Google cloud, hugging face spaces has a really good deployment option now for MCP servers. And you could be having this as a service and doing pretty much whatever you want with it. You can set up your own personal assistant agent with a bunch of functionality. So that's how you get set up with MCP. And folks, the last thing I'm going to say is don't forget that you should have in order for this client to work, the scripts to work the way that they have here.
+[0:26:00]
+
+[0:26:00]
+Don't forget that you have to have, let me just show that. You have to have your environment variable set up for, in this case, entropic API key. So make sure that you have something like export entropic API key is equal to, and then here you put your API key, okay? You either do that or I'm going to leave this in the source code for this lesson. A little dot end file where you put in the entropic API key like this, and you write your API key here, okay? So that this load dot end works and you have no trouble with the API key set up, all right? So that's pretty much it folks. Thanks for watching and I'll see you in the next video. Cheers.

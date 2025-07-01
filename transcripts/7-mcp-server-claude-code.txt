@@ -1,0 +1,54 @@
+Transcript with 1-minute Timeline Markers
+=====================================
+
+
+[0:00:00]
+All right, folks, so we've learned how to set up MCP servers as simple Python scripts that leverage the model context protocol framework to expose functionality. We've also learned how to set up clients as Python scripts that connect to those functionalities. Now in this video, what we're going to be doing is we're going to be learning how to set up MCP servers and expose them as functionality to a tool called Claude Code. Now Claude Code, if you don't know, is an agent decoding tool that lives in your terminal. It was created by the same company behind Claude Sonnet for and Claude Opus and Thoropic. And it's essentially a tool to develop code with AI in your terminal via natural language commands, right? It's a pretty simple and powerful tool. To install it, we just have to run a command called npm install. Like you can see here, if you don't have npm install on your machine, just install that before you run that command. Then you paste that command into your terminal and you're done. After you've done that, you're going to be able to run Claude. And here we are inside Claude Code. Now folks, we're not going to
+[0:01:00]
+
+[0:01:00]
+be going through all of the amazing things within Claude Code. All that we're going to be learning in this tutorial is how to set up an MCP server and expose that to Claude so that Claude can use it to perform tasks in our computer. Now to give an example of the types of things that we can do with Claude, I'm going to open up Claude here and I'm going to say create a simple clicking game app as a single as a single dot HTML file. So what Claude's going to be doing now is Claude is going to be going through all of the tasks needed to set up this application that I've requested, save it as a single HTML file and then come back to me with a message saying I'm done, you can test it out and so on and so forth. So I'm going to be jumping to the part where the app is actually done.
+[0:02:00]
+
+[0:02:00]
+So as you can see here, Claude wrote all the code that we've requested and now because Claude wants to perform an action within my computer, Claude is requesting permission to do so and that's also going to be true when Claude will use our MCP server functionality. So I'm going to say yes. And now as we can see, Claude has finished our app, so we're going to be testing it out real quick just to get a sense clicking game. As we can see, there's a simple clicking game that Claude created
+[0:03:00]
+
+[0:03:00]
+over here. And yeah, it's not like the most amazing clicking game you've ever seen, but it does the trick. All right, so now that you know about Claude code, we're going to be going to the model context protocol section of the Claude code release. And in it, they instruct us on how to set up an MCP server and add it to Claude. So all you have to do is set up that server as a Python script in our computer and then copy a command that looks something like this. So to set that up, we're going to be opening my cursor editor. And I already have here an example, but I'm going to pretend that this example doesn't exist. So to set up our MCP server for Claude, I'm going to be first creating a
+[0:04:00]
+
+[0:04:00]
+folder here called MCP server Claude. And then I'm going to see the into that folder. And now I'm going to first, I'm going to set up my UV project. So I'm going to say UV in it. And then I'm going to say UV vent. And then I'm going to activate my virtual environment. So source the event, the bin activate. Now that I'm inside the proper environment, I'm going to say UV add, and I'm going to add the MCP CLI in the MCP framework to this environment. And now that I've done that, I'm going to create a file called Claude MCP server dot pi, let's write it like underscore Claude MCP server dot pi. And I'm going to be opening that serve Claude MCP server file. And now that we're inside of this file, I'm going to be setting up my simple MCP server. So we've learned how to do that in the
+[0:05:00]
+
+[0:05:00]
+previous video. So it's going to be very simple. I'm just going to say from MCP dot server dot fast MCP import fast MCP. And then I'm going to set up my instance of the MCP by saying fast MCP. And I'm going to give it a name. And the name of the server is going to be top three foods. All right. And let's let's call it Lucas top three foods. Right. And what we're going to do is I'm going to set up my MCP dot tool. And then inside, I'm going to write a function called print. Lucas top three foods. And what this function is going to do is very simple. All this function is going to do is tell the user, what are my top three foods? It's a very silly function. It's just a toy example function that we're going to be using. And it just returns a string saying pancakes pizza and sushi. Those are my sort of top three foods. Actually, pancakes pizza and
+[0:06:00]
+
+[0:06:00]
+ribs. What was I thinking? All right. So now that we've done that, folks, I'm going to say if name equal main, and I'm going to run the MCP server. To test that out, folks, I'm going to open up a little terminal here inside cursor. And what I'm going to do is I'm going to MCP server cloth. So I'm going to go cd into the MCP server cloth folder. Here I am. And I'm going to first deactivate what I'm here. And I'm going to activate source dot then activate. And now that the proper folder is activated MCP server cloth, I'm going to test out this server. So I'm going to run UV run Claude MCP server.py. And it seems like the server is running fine, because with no error was thrown. So I'm going to get out of the server. And what we're going to do now, folks, is here in the terminal, I'm going to be opening Claude to test out to see I'm going to run a
+[0:07:00]
+
+[0:07:00]
+command to add that server and expose it so that Claude can use it to perform tasks and so on. So if we go to the documentation, we see that the command to do so is Claude MCP add. And that we give the name of the MCP server. And then the command necessary to run that server. In our case, the command that we've used is UV run, which is just a proxy for running Python with within the UV package manager. So a simple way to set up this command for this Python script is to indicate what is the Python executable inside of the virtual environment where I am currently located. So I'm going to run which Python. And that tells me that my current location is this one. So I'm going to copy this. And now I'm going to run Claude MCP add. And I'm going to say Lucas top three foods.
+[0:08:00]
+
+[0:08:00]
+I'm going to give the path to the Python executable inside my current machine. Now I've run which Python to get the path to the executable inside of my Mac machine, but that will be a different command if you're in a PowerShell command. If you're in a PowerShell machine. And then I'm going to give the path to the Python file that I want to point to. So I'm going to get that path right here. I'm going to say real path Claude MCP server. I'm going to copy that to my clipboard. I'm going to paste it here. And now here we go, folks, we have Claude MCP add. Lucas top three foods. The path to the Python executable, which is a way for us to securely indicate the Python version within the correct environment that we want to be running this server from. And then I'm going to be indicating the path to the script that I want to be running. Now I'm going to I'm going to hit enter. And as you can see, a nasty DIO MCP server was added. And it's a nasty DIO MCP
+[0:09:00]
+
+[0:09:00]
+server, because that's the default when creating servers here in Claude code. And it's the server appropriate for local scripts and anything that we might develop and set up locally. So now that we've done that, folks, I'm going to open up Claude. And I'm going to hit forward slash, and I'm going to write MCP. And I hit enter. And as we can see, folks below here, we have an MCP server called Lucas top three foods. And this MCP server is connected. So it's currently available for use within Claude. So I'm going to get out of this little window here by clicking ask. And I'm going to write sub Claude. What are Lucas top three foods? All right, which is a very silly way to prompt Claude to get that tool. But as you can see here, Claude is going to be using the MCP to there you go. Top three using the available MCP to and we know that Claude is doing so because
+[0:10:00]
+
+[0:10:00]
+Claude is asking me permission to do that because it's the first time that it does. So I'm going to say yes, and never ask again for this particular MCP server tool. And when I hit enter, Claude is going to run that MCP server by using the commands that we have indicated. And there we go. We now have the output of that MCP server. Now, what's really cool is that when we do this, folks, when we set up this MCP server here in Claude, what happens is that a file called dot MCP dot Jason is created within within the current folder.
+[0:11:00]
+
+[0:11:00]
+Now, what's cool about Claude is that if we wanted to make sure that this particular MCP server is restrained to the current project where I am located inside of my computer, all I would have to do is add the minus S project flag to the command that we use to add the MCP server. So what this thing is doing is setting the scope of the MCP server to the current project, which means the current folder where we are located. So what I'm going to be doing is I'm going to run the same command that we've run previously, right? So I'm going to say I'm going to say the same thing that we've ran before. But this time I'm going to come over to this part of the command. And I'm going to make a comment where I say minus S project. So now what's interesting is that an MCP dot
+[0:12:00]
+
+[0:12:00]
+Jason file has been created, which if I hit enter here so they can visualize what's inside of that file, you can see that an MCP server for this project was created called Lucas top three foods. The type is STD IO, the command to run it is in here, it's indicating the Python executable inside of the virtual environment. And the arguments is simply the Python file. There are no environment variables to run this particular MCP server. So we're set here. And this process is going to be very similar as we use different tools, like cursor, for example. So in the next video, I'm going to be showing you how to set up an MCP server, how to expose this MCP server to cursor, using a very similar approach. So I'll see you there. Cheers.

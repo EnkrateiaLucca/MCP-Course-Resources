@@ -1,0 +1,22 @@
+Transcript with 1-minute Timeline Markers
+=====================================
+
+
+[0:00:00]
+All right, folks. So now we're going to talk about the communication protocol that is set in place by mcp. So mcp uses JSON RPC 2.0 as its protocol, as its messaging protocol, which means the rules for the messaging and the communication between the client, which we have over here, and the server. So initially, we have three types of messages that can be exchanged by the client and the server. We have the request, which is sent from the client to the server. We have the response, which is relayed back from the server. And usually, we can also have notifications that are typically sent by the server to the client, but clients can also send notifications to the server, for example, during initialization to indicate to the server that initialization has been completed and the client has received the information from the server. So how does that work? So let's inspect what are the types of
+[0:01:00]
+
+[0:01:00]
+things that we can have inside of a message from requests, responses, and notifications. So a request can have three elements. The message request can have essentially three elements. That message will include an ID for that request, the method for a tool call, whatever it's being invoked or used, and the parameters for invoking that specific function, and so on and so forth. So ID, method, parameters. Now, our response will have the same ID as the request, given that every response relates to some sort of request that was sent by the client. And besides that, the response can either be successful, in which case, the server will be sending a result back to the client, or if it's not successful, it's going to be sending a narrow message back to the client. And finally, for notifications, these are usually one-way
+[0:02:00]
+
+[0:02:00]
+messages that are typically sent from the server to the client, but can also be sent sometimes from the client to the server. Now, there are two transport mechanisms set in place by this JSON RPC protocol. We have local transport, which means STDIO for setting communication completely locally on your machine, meaning that communication like this, the transport like this will involve you running some command to a local script on your local machine, or remotely, the used to be SSC server sent events, but that has been deprecated. And now for remote communications, we're going to be using streamable HTTP, all right, for this messaging protocol. Now, what does the client server interaction lifecycle looks like? So we're going to have four stages. We're going to have initialization, discovery, execution, and termination. So during initialization, the client's going to send a request to the server,
+[0:03:00]
+
+[0:03:00]
+and the server is going to say, the version and the server is going to indicate to the client, what is the, what is its version, and the capabilities, and the server responds with the protocol version and the capabilities. The client confirms via some notification, and they were done. During discovery, the client requests information about available capabilities and the server responds with all the tools available. We've seen an example of that with a asynchronous request list tools that we implemented in the example that we did in the previous video. Finally, we can have the execution, which involves the client invoking capabilities, based on whatever the host needs are, which means the client will invoke capabilities, and what happens is the client's going to send some tool call execution to the server. The server is going to notify, which is an optional situation, the server is going to be
+[0:04:00]
+
+[0:04:00]
+notifying the progress of that execution request, and then finally is going to send a response back with the outputs of that execution. Finally, we have termination where the connection is closed, and the server acknowledges the shipped out request. So the client sends a shipped out request to the server. The server responds this, and then the client acknowledges it and exits that connection. We saw that when we clicked on disconnect in the MCP inspector, for example. Sorry, folks. So we don't need to have this super deep knowledge on what this protocol looks like in practice to build MCP servers and clients, but the more you know, the better you are equipped to build, you know, useful servers and clients and, you know, have some fun with MCP. So let's move on to the next video. Cheers.

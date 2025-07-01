@@ -1,0 +1,22 @@
+Transcript with 1-minute Timeline Markers
+=====================================
+
+
+[0:00:00]
+Alright folks, in this lesson we're going to be covering what is MCP? MCP is an open protocol to standardize connections between LLMs and context. Now what does that mean? So what does it look like to build an agent in 2025? We have the following scenario folks. We have this little cycle in a basic agent application where a user sends a prompt to a large language model and the large language model usually faces the following choice. Using one of its tools, like search, Wikipedia search, archive search, calendar, management capabilities, email sending and email reading capabilities and so on and so forth. So the model can use one of these tools or the model can send a final output to the user. And the model cycles through this process a few times until a task is completed. Now this basic idea is called the agent loop and it sits behind most of the agent applications
+[0:01:00]
+
+[0:01:00]
+that we use today because despite its simplicity is extremely powerful and allows for LLMs to actually perform really useful things for us. So what is the problem here? Well if we want to build this we actually need to take care of the LLM API access for integrating a large language model into this application. We need to take care of the connections to tools and resources that connect to this LLM and make this LLM actually practically useful. And finally we need to take care of the agent logic. Now obviously I'm not even covering here other production needs like orchestration, monitoring observability, evaluation because we're just thinking about the most basic core components of what an agent application looks like. Now the problem with the situation is that it leads to what we call the M and integration
+[0:02:00]
+
+[0:02:00]
+problem where if we wanted to add another large language model to this system we would have to rewrite the connections to the same resources tools and prompts that we already wrote for the first LLM because the second LLM belongs to a different provider that has a different set of rules and guidelines for how to establish these connections. The same thing for a third LLM and so on and so forth. That leads to a problem where we have way too many integrations to maintain in our code. So M multiply by N where M represents the number of large language models and N represents the number of potential integrations that we need to make. So MCP appears as a potential solution to work as a middle layer between LLMs in connection to resources, tools and prompts or summarized as context.
+[0:03:00]
+
+[0:03:00]
+Because if you would just have to write the integration to the MCP and MCP would connect all of those things to the resources and tools and prompts and we would translate a problem that previously was M multiply by N integrations to a problem of M plus N integrations. Now that begs the question, what is MCP in practice? We've already talked about this idea of being something that standardizes these connections. But if we go a little bit deeper, we find a few core components in the MCP infrastructure that are essential to understand its functionalities. Now the core components are the host, the user facing application like cloud desktop, IDs like cursor and these hosts will hold sub components called clients which will have
+[0:04:00]
+
+[0:04:00]
+the task of handling the one-to-one connections with MCP servers and MCP servers will be responsible for exposing functionality like tools, resources and prompts allowing clients to make requests to these servers not only to discover what these capabilities are, but to relay that information to the LLM that sits at the host application. So the LLM can make the decisions for which tools the LLM wants to use or which resources it wants to use in order to perform whatever task the user gives it. In the next lesson, we're going to be going a little bit deeper into the score components. I'll see you there.

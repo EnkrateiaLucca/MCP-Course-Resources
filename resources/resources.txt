@@ -1,0 +1,4 @@
+https://huggingface.co/learn/mcp-course/unit1/communication-protocol
+https://modelcontextprotocol.io/quickstart/client#basic-client-structure
+https://modelcontextprotocol.io/quickstart/server
+https://huggingface.co/learn/mcp-course/unit1/communication-protocol
