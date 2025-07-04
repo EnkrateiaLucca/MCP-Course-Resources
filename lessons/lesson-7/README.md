@@ -15,7 +15,7 @@ Learn how to integrate your MCP servers with Claude Code for seamless AI-powered
 - Tool discovery
 - Error handling
 
-## Code Example
+## Code Example for Claude Desktop:
 See `/code-examples/04-claude-integration/` for a minimal example.
 
 ## Configuration Steps
