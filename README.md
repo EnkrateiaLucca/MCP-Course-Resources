@@ -55,7 +55,7 @@ getting-started-with-mcp-repo/
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/EnkrateiaLucca/MCP-Course-Resources
 cd getting-started-with-mcp-repo
 ```
 
